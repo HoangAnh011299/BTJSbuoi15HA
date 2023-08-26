@@ -1,0 +1,34 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-height: 100vh;
+    font-family: Hack, monospace;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.navbar-dark .nav-item.active .nav-link{
+    color: goldenrod;
+}
+.dropdown-item.active {
+    background: goldenrod;
+}
+
+.nav-link {
+  padding: 10px 0px;
+  margin-right: 20px;
+}
+ 
+.nav-item a:hover {
+  color: #ff606e;
+}
+

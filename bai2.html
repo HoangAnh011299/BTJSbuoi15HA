@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- sweet alert css  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.css">
+    <!-- main css  -->
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/bai1.css">
+  </head>
+  <body>
+
+    <!-- 
+       Input: tên khách hàng và số kw
+    Xử lý:
+    b1:tạo biến tenKhachHang và soKW
+    b2: gán giá trị cho soKW
+    b3: xét số kw, với 50kw đầu là 500đ/kww, trên 50kw-100kw thì 650đ/kw, trên 100kw-200kw thì 850đ/kw, trên 200kw-350kw thì 1100đ/kw, trên 350kw là 1300đ/kw
+    b4: tính số kw theo bảng tính trên
+    b5: in ra kết quả tiền điện
+
+    OutPut: Kết quả tiền điện -->
+        
+
+<!-- begin nav .include -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarDefault">
+        <ul class="navbar-nav row px-2 px-md-0 ml-md-auto mr-1">
+            <li class="nav-item contact">
+                <a class="nav-link" href="./index.html">Bài 1</a>
+            </li>
+            <li class="nav-item contact">
+                <a class="nav-link" href="./bai2.html">Bài 2</a>
+            </li>
+            <li class="nav-item contact">
+                <a class="nav-link" href="./bai3.html">Bài 3</a>
+            </li>
+            <li class="nav-item contact">
+                <a class="nav-link" href="./bai4.html">Bài 4</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- /end nav .include -->
+
+<div class="form-body pb50">
+    <div class="row">
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Tính tiền điện</h3>
+                    <form class="requires-validation" novalidate>
+
+                        <div class="col-md-12">
+                           <input class="form-control" type="text" id="tenKhachHang" name="tenKhachHang" placeholder="Tên khách hàng" required>
+                           <div class="valid-feedback">Đã nhập</div>
+                           <div class="invalid-feedback">Bạn chưa nhập tên khách hàng </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" name="soKW" id="soKW" placeholder="Số KW" required>
+                             <div class="valid-feedback">Đã nhập</div>
+                             <div class="invalid-feedback">Bạn chưa nhập số kw điện </div>
+                        </div>
+
+                    <div class="form-check" style="margin-top: 10px">
+                      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                      <label class="form-check-label">Tôi xác nhận tất cả dữ liệu đều đúng!</label>
+                     <div class="invalid-feedback">Vui lòng xác nhận dữ liệu bạn đã nhập!</div>
+                    </div>
+              
+
+                        <div class="form-button">
+                            <button type="submit" id="submitButton" class="btn btn-primary" onclick="xuatTienDien()">XUẤT KẾT QUẢ</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="pb50 mb50"></footer>
+    <!-- main script  -->
+    <script src="./js/index.js"></script>
+    <script src="./js/bai2.js"></script>
+    <!-- sweet alert js  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.all.min.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

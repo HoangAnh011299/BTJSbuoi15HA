@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- sweet alert css  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.css">
+    <!-- main css  -->
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/bai1.css">
+  </head>
+  <body>
+
+<!-- 
+    Input: Mã khách hàng, loại khách hàng, số kết nối, số kênh cao cấp
+    
+    Xử lý:
+    - b1:tạo biến loaiKhachHang, soKetNoi, soKenhCaoCap, tienThue , phiXLHDND =4.5, phiXLHDDV =15, phiDVCBND =20.5, phiDVCBDN =75, phiKenhCCND = 7.5 ,  phiKenhCCDN = 50, tongPhiDV ,tienCap 
+    - b2: gán giá trị cho loaiKhachHang, soKetNoi nếu là doanh nghiệp , soKenhCaoCap, 
+    -b3: tính tiền cáp theo nhà dân là: tienCap = phiXLHDND + phiDVCBND + soKenhCaoCap * phiKenhCCND ,
+    - b4: xét số kết nối nếu là cáp doanh nghiệp thì : 75$ cho tổng 10 kết nối đầu là , 1 kết nối thêm trở lên mỗi cáp tăng thêm 5$, nếu không hơn 10 kết nối thì tongPhiDVCBDN = 75 , từ 11 kết nối trở lên thì tongPhiDVCBDN = 75 + (soKetNoi -10) * 5 , tính tiền theo cáp doanh nghiệp: tienCap = phiXLHDDV + tongPhiDVCBDN + soKenhCaoCap * phiKenhCCDN 
+    - b5: in ra kết quả là tienCap 
+
+    OutPut: Kết quả tiền cáp phải nộp
+ -->
+        
+
+<!-- begin nav .include -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarDefault">
+        <ul class="navbar-nav row px-2 px-md-0 ml-md-auto mr-1">
+            <li class="nav-item contact">
+                <a class="nav-link" href="./index.html">Bài 1</a>
+            </li>
+            <li class="nav-item contact">
+                <a class="nav-link" href="./bai2.html">Bài 2</a>
+            </li>
+            <li class="nav-item contact">
+                <a class="nav-link" href="./bai3.html">Bài 3</a>
+            </li>
+            <li class="nav-item contact">
+                <a class="nav-link" href="./bai4.html">Bài 4</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- /end nav .include -->
+
+
+<div class="form-body pb50">
+    <div class="row">
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Tính tiền cáp</h3>
+                    <form class="requires-validation" novalidate>
+                        <div class="col-md-12 mt-3">
+                            <label class="mb-3 mr-1" for="loaiKhachHang">Loại khách hàng: </label>
+                            
+                            <input type="radio" class="btn-check" name="loaiKH" id="doanhNghiep" onclick="layLoaiKH();" autocomplete="off" required>
+                            <label class="btn btn-sm btn-outline-secondary" for="doanhNghiep">Doanh nghiệp</label>
+
+                            <input type="radio" class="btn-check" name="loaiKH" id="nhaDan" onclick="layLoaiKH();" autocomplete="off" required>
+                            <label class="btn btn-sm btn-outline-secondary" for="nhaDan">Nhà dân</label>
+    
+                            <div class="valid-feedback mv-up">Bạn đã chọn !</div>
+                            <div class="invalid-feedback mv-up">>Vui lòng chọn loại khách hàng !</div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" name="maKH" id="maKH" placeholder="Mã khách hàng" required>
+                             <div class="valid-feedback">Đã nhập</div>
+                             <div class="invalid-feedback">Bạn chưa nhập mã khách hàng </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" name="soKenhCC" id="soKenhCC" placeholder="Số kênh cao cấp" required>
+                             <div class="valid-feedback">Đã nhập</div>
+                             <div class="invalid-feedback">Bạn chưa nhập số kênh cao cấp </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" name="soKetNoi" id="soKetNoi" placeholder="Số kết nối" required>
+                             <div class="valid-feedback">Đã nhập</div>
+                             <div class="invalid-feedback">Bạn chưa nhập số kết nối </div>
+                        </div>
+                      
+                    <div class="form-check mt10" >
+                      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                      <label class="form-check-label">Tôi xác nhận tất cả dữ liệu đều đúng!</label>
+                     <div class="invalid-feedback">Vui lòng xác nhận dữ liệu bạn đã nhập!</div>
+                    </div>
+              
+
+                        <div class="form-button mt-5">
+                            <button type="submit" id="submitButton" class="btn btn-primary" onclick="xuatTienCap()">XUẤT KẾT QUẢ</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+    // Gọi hàm focusDoanhNghiep khi trang được tải
+    window.onload = focusDoanhNghiep;
+
+    // Hàm để focus vào ô input "Doanh nghiệp"
+    function focusDoanhNghiep() {
+        const doanhNghiepInput = document.getElementById("doanhNghiep");
+        doanhNghiepInput.checked = true; // Chọn radio button "Doanh nghiệp"
+        layLoaiKH(); // Gọi hàm layLoaiKH() để thực hiện các hành động liên quan đến focus
+    }
+    </script>
+
+    <!-- main script  -->
+    <script src="./js/bai4.js"></script>
+    <script src="./js/index.js"></script>
+    <!-- sweet alert js  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.all.min.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
